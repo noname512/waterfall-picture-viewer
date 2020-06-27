@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "WaterfallViewController.h"
+#import "WaterfallViewLayout.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    WaterfallViewLayout *layout = [[WaterfallViewLayout alloc] init];
+    [layout setColum:2];
+    [layout setDistance:10];
+    [layout setInsetSpace:UIEdgeInsetsMake(5, 5, 5, 5)];
+    WaterfallViewController *vc = [[WaterfallViewController alloc] initWithCollectionViewLayout:layout];
+    self.window.rootViewController = vc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
