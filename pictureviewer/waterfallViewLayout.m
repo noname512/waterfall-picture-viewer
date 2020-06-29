@@ -65,12 +65,14 @@
         CGFloat xOffset = _insetSpace.left + currentColum * (width + _distance);
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         CGFloat yOffset = [[_columHeightArr objectAtIndex:currentColum] floatValue] + _distance;
-        CGFloat height = 0.f;
+/*        CGFloat height = 0.f;
         if (_delegate && [_delegate respondsToSelector:@selector(waterfall:heightForCellAtIndexPath:)]) {
             height = [_delegate waterfall:self heightForCellAtIndexPath:indexPath];
-        }
+        }*/
+        CGFloat height = arc4random() % 100 + 50;
         CGRect frame = CGRectMake(xOffset, yOffset, width, height);
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+        NSLog(@"attributes of No.%ld: %f, %f, %f, %f", indexPath.item, xOffset, yOffset, width, height);
         attributes.frame = frame;
         [_cellFrameArr addObject:attributes];
         _columHeightArr[currentColum] = @(frame.size.height + frame.origin.y);
@@ -98,26 +100,26 @@
 }
 
 - (CGFloat)getLongestColumHeight {
-    __block NSInteger currentColum = 0;
-    __block CGFloat longestHeight = 0;
-    [_columHeightArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj floatValue] > longestHeight) {
-            longestHeight = [obj floatValue];
-            currentColum = idx;
+    NSInteger currentColum = 0;
+    CGFloat longestHeight = 0;
+    for (int i = 0; i < _colum; i++) {
+        if ([[_columHeightArr objectAtIndex:i] floatValue] > longestHeight) {
+            longestHeight = [[_columHeightArr objectAtIndex:i] floatValue];
+            currentColum = i;
         }
-    }];
+    }
     return longestHeight + _insetSpace.bottom;
 }
 
 - (NSInteger)getShortestColum {
-    __block NSInteger currentColum = 0;
-    __block CGFloat ShortestHeight = 0;
-    [_columHeightArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj floatValue] < ShortestHeight) {
-            ShortestHeight = [obj floatValue];
-            currentColum = idx;
+    NSInteger currentColum = 0;
+    CGFloat ShortestHeight = [[_columHeightArr objectAtIndex:0] floatValue];
+    for (int i = 1; i < _colum; i++) {
+        if ([[_columHeightArr objectAtIndex:i] floatValue] < ShortestHeight) {
+            ShortestHeight = [[_columHeightArr objectAtIndex:i] floatValue];
+            currentColum = i;
         }
-    }];
+    }
     return currentColum;
 }
 

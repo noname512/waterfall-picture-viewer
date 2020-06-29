@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19B3117224A77A6B0069B925 /* WaterfallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3117124A77A6B0069B925 /* WaterfallViewController.m */; };
 		19B3117524A77DCD0069B925 /* WaterfallViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3117424A77DCD0069B925 /* WaterfallViewCell.m */; };
+		19B3119324A9D8390069B925 /* qwq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19B3119224A9D8390069B925 /* qwq.jpg */; };
 		19E57BB9249F421900BEAD0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E57BB8249F421900BEAD0B /* AppDelegate.m */; };
 		19E57BBB249F421F00BEAD0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19E57BBA249F421F00BEAD0B /* Assets.xcassets */; };
 		19E57BBE249F421F00BEAD0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E57BBC249F421F00BEAD0B /* LaunchScreen.storyboard */; };
@@ -21,6 +22,7 @@
 		19B3117124A77A6B0069B925 /* WaterfallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterfallViewController.m; sourceTree = "<group>"; };
 		19B3117324A77DCD0069B925 /* WaterfallViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterfallViewCell.h; sourceTree = "<group>"; };
 		19B3117424A77DCD0069B925 /* WaterfallViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterfallViewCell.m; sourceTree = "<group>"; };
+		19B3119224A9D8390069B925 /* qwq.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qwq.jpg; sourceTree = "<group>"; };
 		19E57BB4249F421900BEAD0B /* pictureviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pictureviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E57BB7249F421900BEAD0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19E57BB8249F421900BEAD0B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				19E57BBC249F421F00BEAD0B /* LaunchScreen.storyboard */,
 				19E57BBF249F421F00BEAD0B /* Info.plist */,
 				19E57BC0249F421F00BEAD0B /* main.m */,
+				19B3119224A9D8390069B925 /* qwq.jpg */,
 			);
 			path = pictureviewer;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B3119324A9D8390069B925 /* qwq.jpg in Resources */,
 				19E57BBB249F421F00BEAD0B /* Assets.xcassets in Resources */,
 				19E57BBE249F421F00BEAD0B /* LaunchScreen.storyboard in Resources */,
 			);

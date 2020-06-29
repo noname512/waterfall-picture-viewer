@@ -12,6 +12,9 @@
 
 @interface WaterfallViewController ()
 
+@property (nonatomic) NSInteger cnt;
+@property (nonatomic, strong) NSMutableDictionary *cellDic;
+
 @end
 
 @implementation WaterfallViewController
@@ -25,7 +28,10 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[WaterfallViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.cellDic = [[NSMutableDictionary alloc] init];
+                                      
+    _cnt = 0;
     
     // Do any additional setup after loading the view.
 }
@@ -48,18 +54,36 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return 30;
 }
 
 - (WaterfallViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    WaterfallViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    NSString *formatInd = [NSString stringWithFormat:@"%@", indexPath];
+    NSString *identifier = [_cellDic objectForKey:formatInd];
+    if (identifier == nil) {
+        identifier = [NSString stringWithFormat:@"%@%@", reuseIdentifier, formatInd];
+        [_cellDic setValue:identifier forKey:formatInd];
+        [self.collectionView registerClass:[WaterfallViewCell class] forCellWithReuseIdentifier:identifier];
+    }
     
-    // Configure the cell
-/*    NSInteger imageIndex = arc4random() % 10;
-    NSString *imageName = [NSString stringWithFormat:@"00%ld.jpg", imageIndex];*/
-    NSString *imageName = @"qwq.jpg";
+    WaterfallViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    [cell.cellImageView setImage:[UIImage imageNamed:imageName]];
+    if (cell.cellImageView == nil) {
+        _cnt = _cnt + 1;
+        NSLog(@"test %ld: %ld", _cnt, indexPath.item);
+        cell.cellImageView = [[UIImageView alloc] init];
+        
+        // Configure the cell
+    /*    NSInteger imageIndex = arc4random() % 10;
+        NSString *imageName = [NSString stringWithFormat:@"00%ld.jpg", imageIndex];*/
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"qwq" ofType:@"jpg"];
+        UIImage *images = [UIImage imageWithContentsOfFile:imagePath];
+        [cell.cellImageView setImage:images];
+        cell.cellImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        cell.backgroundColor = [UIColor colorWithRed:arc4random() % 256 / 255. green:arc4random() % 256 / 255. blue:arc4random() % 256 / 255. alpha:1];
+        NSLog(@"bgc: %ld", indexPath.item * 10);
+    }
     
     return cell;
 }
